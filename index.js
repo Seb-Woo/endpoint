@@ -43,8 +43,8 @@ app.post("/savedata", async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO data (value) VALUES ($1) RETURNING *;`,
-      [value]
+      `INSERT INTO data (value, nombre, matricula) VALUES ($1, $2, $3) RETURNING *;`,
+      [value, nombre, matricula]
     );
 
     return res.status(201).json({
