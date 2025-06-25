@@ -99,7 +99,7 @@ app.get("/temperatura", (req, res) => {
   res.json({ valor: "10 °C", timestamp: new Date().toISOString() });
 });
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
