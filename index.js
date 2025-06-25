@@ -19,6 +19,8 @@ app.post("/create-table", async (req, res) => {
       await pool.query(`
         CREATE TABLE ${tableName} (
           id SERIAL PRIMARY KEY,
+          nombre VARCHAR(100) NOT NULL,
+          matricula VARCHAR(50) NOT NULL,
           value TEXT,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
@@ -35,9 +37,9 @@ app.post("/create-table", async (req, res) => {
 });
 
 app.post("/savedata", async (req, res) => {
-  const { value } = req.body;
+  const { value, nombre, matricula } = req.body;
 
-  if (!value) {
+  if (!value || !nombre || !matricula) {
     return res.status(400).json({ error: "El campo 'value' es requerido" });
   }
 
