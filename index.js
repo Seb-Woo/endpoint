@@ -38,6 +38,7 @@ app.post("/create-table", async (req, res) => {
 
 app.post("/savedata", async (req, res) => {
   const { value, nombre, matricula } = req.body;
+  console.log(value, nombre, matricula);
 
   if (!value || !nombre || !matricula) {
     return res.status(400).json({ error: "El campo 'value' es requerido" });
