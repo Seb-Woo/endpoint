@@ -66,7 +66,7 @@ app.post("/turn-on", async (req, res) => {
 
   try {
     await pool.query(
-      `INSERT INTO device_logs (action, use, enroll_id) VALUES ($1, $2, $3)`,
+      `INSERT INTO device_logs (action, "user", enroll_id) VALUES ($1, $2, $3)`,
       ["turn-on", user, enrollId]
     );
 
