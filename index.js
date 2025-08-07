@@ -10,8 +10,6 @@ app.use(express.json());
 app.post("/create-data-table", async (req, res) => {
   const tableName = "device_logs";
   try {
-    const tableName = "data";
-
     const checkTable = await pool.query(`SELECT to_regclass($1) AS exists`, [
       tableName,
     ]);
@@ -63,6 +61,7 @@ app.delete("/deletetable", async (req, res) => {
 
 app.post("/turn-on", async (req, res) => {
   const { user, enrollId } = req.body;
+  const deviceStatus = {};
   deviceStatus.isOn = true;
 
   try {
@@ -92,7 +91,7 @@ app.post("/savedata", async (req, res) => {
 
   try {
     await pool.query(
-      `INSERT INTO ${tableName}(value, name, matricula) VALUES ($1, $2, $3)`,
+      `INSERT INTO ${tableName}(value, "name", matricula) VALUES ($1, $2, $3)`,
       [value, name, matricula]
     );
 
