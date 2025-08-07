@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/create-data-table", async (req, res) => {
+  const tableName = "device_logs";
   try {
     const tableName = "data";
 
